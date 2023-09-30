@@ -13,7 +13,9 @@ const AllStories = () => {
     const getSavedStory = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:3000/sharedStories`);
+        const response = await fetch(
+          `https://y-seven-ecru.vercel.app/sharedStories`
+        );
 
         if (response.status === 200) {
           const data = await response.json();
@@ -39,7 +41,7 @@ const AllStories = () => {
       if (!upvoted) {
         // Make a PATCH request to upvote the story
         const response = await axios.patch(
-          `http://localhost:3000/upvote/${id}`
+          `https://y-seven-ecru.vercel.app/upvote/${id}`
         );
         if (response.status === 200) {
           alert(response.data);

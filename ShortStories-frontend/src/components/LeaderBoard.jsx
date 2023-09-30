@@ -8,7 +8,9 @@ const LeaderBoard = () => {
   useEffect(() => {
     const getSavedStory = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/leaderboard`);
+        const response = await fetch(
+          `https://y-seven-ecru.vercel.app/leaderboard`
+        );
 
         if (response.status === 200) {
           const data = await response.json();

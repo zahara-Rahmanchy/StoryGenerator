@@ -27,7 +27,7 @@ const Signup = () => {
         };
 
         axios
-          .post("http://localhost:3000/users", newUser)
+          .post("https://y-seven-ecru.vercel.app/users", newUser)
           .then(response => {
             if (response) {
               alert("Registered Successfully!");
@@ -43,14 +43,17 @@ const Signup = () => {
       .catch(error => setError(error.message));
   };
   return (
-    <div className="hero  min-h-screen bg-base-100 rounded-md mx-auto">
+    <div className="hero  min-h-screen bg-tranparent rounded-md mx-auto">
       <div className="hero-content flex-col md:flex-row">
         <div className="card flex-shrink-0 w-full max-w-md shadow-2xl ">
           <div className="card-body">
+            <h1 className="text-center my-6 text-4xl font-serif italic font-semibold text-transparent bg-clip-text bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500">
+              Sign Up
+            </h1>
             <form onSubmit={handleSignUp} id="form">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text text-cyan-300">Name</span>
                 </label>
                 <input
                   type="text"
@@ -62,7 +65,7 @@ const Signup = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-cyan-300">Email</span>
                 </label>
                 <input
                   type="text"
@@ -75,7 +78,7 @@ const Signup = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-cyan-300">Password</span>
                 </label>
                 <input
                   type="password"
@@ -85,12 +88,12 @@ const Signup = () => {
                   required
                 />
                 <p className="my-4 ">
-                  <span className="text-sm font-light">
+                  <span className="text-sm font-light text-white">
                     {" "}
                     Already Have an Account?{" "}
                   </span>
                   <Link
-                    className="text-blue-600 font-semibold hover:link"
+                    className="text-blue-300 font-semibold hover:link"
                     to="/login"
                   >
                     Login

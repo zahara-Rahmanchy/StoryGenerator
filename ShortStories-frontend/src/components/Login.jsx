@@ -36,8 +36,8 @@ const Login = () => {
             </h1>
             <div className="card-body">
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
+                <label className="label text-cyan-300">
+                  <span className="label-text text-cyan-300">Email</span>
                 </label>
                 <input
                   type="text"
@@ -48,7 +48,7 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-cyan-300">Password</span>
                 </label>
                 <input
                   type="password"

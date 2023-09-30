@@ -16,7 +16,10 @@ const StoryContainer = ({props}) => {
       storyId: props.storyId,
     };
     try {
-      const response = await axios.post("http://localhost:3000/stories", story);
+      const response = await axios.post(
+        "https://y-seven-ecru.vercel.app/stories",
+        story
+      );
       if (response.status == 200) {
         alert("Saved!");
       }
@@ -38,7 +41,10 @@ const StoryContainer = ({props}) => {
       upvotes: 0,
     };
     try {
-      const response = await axios.post("http://localhost:3000/stories", story);
+      const response = await axios.post(
+        "https://y-seven-ecru.vercel.app/stories",
+        story
+      );
       if (response.status == 200) {
         alert("Story Shared with Everyone!");
       }

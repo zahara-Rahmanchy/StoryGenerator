@@ -14,7 +14,7 @@ const SavedStories = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:3000/saved/${user?.email}`
+          `https://y-seven-ecru.vercel.app/saved/${user?.email}`
         );
 
         if (response.status === 200) {

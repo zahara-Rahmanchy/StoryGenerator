@@ -17,7 +17,10 @@ const GenerateStory = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3000/chat", {prompt});
+      const response = await axios.post(
+        "https://y-seven-ecru.vercel.app/chat",
+        {prompt}
+      );
       setGeneratedStory(response.data);
       setPrompt(prompt);
       const id = uuid().slice(0, 8);
