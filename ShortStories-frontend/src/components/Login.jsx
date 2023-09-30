@@ -1,10 +1,12 @@
 import React, {useContext, useState} from "react";
 import {AuthContext} from "../firebase/AuthProvider";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const Login = () => {
   const {logIn} = useContext(AuthContext);
   const [error, setError] = useState();
+  const navigate = useNavigate();
+
   const handleLogin = e => {
     setError("");
     e.preventDefault();
@@ -19,7 +21,7 @@ const Login = () => {
         alert("logged In Successfully");
         form.reset();
 
-        navigate(fromCurrentLocation, {replace: true});
+        navigate("/", {replace: true});
       })
       .catch(error => setError(error.message));
   };

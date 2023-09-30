@@ -1,22 +1,27 @@
-import React, {useState} from "react";
+import React, {useId, useState} from "react";
 import {PiPaperPlaneRightFill} from "react-icons/pi";
 import axios from "axios";
 import StoryContainer from "./StoryContainer";
+import {v4 as uuid} from "uuid";
+
 const GenerateStory = () => {
-  //   const [description, setDescription] = useState("");
   const [generatedStory, setGeneratedStory] = useState("");
+  const [storyId, setStoryId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [Prompt, setPrompt] = useState("");
   const handleGenerateStory = async e => {
     e.preventDefault();
     const prompt = e.target.story.value;
     console.log(prompt);
+
     setIsLoading(true);
 
     try {
       const response = await axios.post("http://localhost:3000/chat", {prompt});
       setGeneratedStory(response.data);
       setPrompt(prompt);
+      const id = uuid().slice(0, 8);
+      setStoryId(id);
       console.log(response);
       form.reset();
     } catch (error) {
@@ -48,7 +53,9 @@ const GenerateStory = () => {
           <PiPaperPlaneRightFill className=" rotate-90 text-md " />
         </button>
       </form>
-      {generatedStory && <StoryContainer props={{Prompt, generatedStory}} />}
+      {generatedStory && (
+        <StoryContainer props={{Prompt, generatedStory, storyId}} />
+      )}
     </section>
   );
 };

@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../firebase/AuthProvider";
+import axios from "axios";
 
 const Signup = () => {
   const {createUser} = useContext(AuthContext);
@@ -18,11 +19,24 @@ const Signup = () => {
     createUser(email, password)
       .then(result => {
         const user = result.user;
-        // console.log("created user", user);
+        console.log(user);
+        const newUser = {
+          name: user.name,
+          email: user.email,
+          uid: user.uid,
+        };
 
-        alert("Registered Successfully!");
-        navigate("/login", {replace: true});
-        // use toast
+        axios
+          .post("http://localhost:3000/users", newUser)
+          .then(response => {
+            if (response) {
+              alert("Registered Successfully!");
+            }
+          })
+          .catch(error => {
+            setError(error.message);
+          });
+        navigate("/", {replace: true});
 
         form.reset();
       })
