@@ -117,8 +117,55 @@ async function run() {
         return res.send({message: "The Story is already saved already"});
       }
 
-      const result = await storiesCollection.insertOne(body);
+      const result = await sharedCollection.insertOne(body);
       res.send({status: 200});
+    });
+
+    // saved stories
+    app.get("/saved/:email", async (req, res) => {
+      const email = req.params.email; // Get the email from the route parameters
+      console.log(email);
+      const result = await storiesCollection.find({email: email}).toArray(); // Fetch classes based on the email
+      res.send(result);
+    });
+
+    // shared stories
+    app.get("/sharedStories", async (req, res) => {
+      const result = await sharedCollection.find().toArray(); // Fetch classes based on the email
+      res.send(result);
+    });
+
+    // upvote
+    app.patch("/upvote/:storyId", async (req, res) => {
+      const storyId = req.params.storyId;
+
+      try {
+        const filter = {storyId: storyId};
+
+        // Check if the 'upvotes' field exists in the document
+        const existingStory = await sharedCollection.findOne(filter);
+
+        let update;
+        if (existingStory && existingStory.upvotes !== undefined) {
+          // If 'upvotes' field exists, increment it by 1
+          update = {$inc: {upvotes: 1}};
+        } else {
+          // If 'upvotes' field doesn't exist, create it with a value of 1
+          update = {$set: {upvotes: 1}};
+        }
+
+        const result = await sharedCollection.updateOne(filter, update);
+
+        if (result.modifiedCount === 1) {
+          // console.log(result);
+          res.send("Story upvoted successfully");
+        } else {
+          res.send("Story Not found");
+        }
+      } catch (error) {
+        console.error("Error upvoting story:", error);
+        res.send("Error Upvoting");
+      }
     });
 
     await client.db("admin").command({ping: 1});

@@ -16,7 +16,7 @@ const Signup = () => {
 
     // console.log(name, email, password, url);
 
-    createUser(email, password)
+    createUser(name, email, password)
       .then(result => {
         const user = result.user;
         console.log(user);

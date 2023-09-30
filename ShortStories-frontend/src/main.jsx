@@ -7,6 +7,8 @@ import AuthProvider from "./firebase/AuthProvider.jsx";
 import Signup from "./components/Signup.jsx";
 import Login from "./components/Login.jsx";
 import Home from "./components/Home.jsx";
+import SavedStories from "./components/SavedStories.jsx";
+import AllStories from "./components/AllStories.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/savedstories",
+        element: <SavedStories />,
+      },
+      {
+        path: "/stories",
+        element: <AllStories />,
       },
     ],
   },
