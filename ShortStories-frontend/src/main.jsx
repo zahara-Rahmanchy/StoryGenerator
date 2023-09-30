@@ -9,6 +9,7 @@ import Login from "./components/Login.jsx";
 import Home from "./components/Home.jsx";
 import SavedStories from "./components/SavedStories.jsx";
 import AllStories from "./components/AllStories.jsx";
+import LeaderBoard from "./components/LeaderBoard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/stories",
         element: <AllStories />,
+      },
+      {
+        path: "/leaderboard",
+        element: <LeaderBoard />,
       },
     ],
   },

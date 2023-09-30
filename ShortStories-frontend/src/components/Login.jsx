@@ -29,7 +29,7 @@ const Login = () => {
   return (
     <div className="hero  min-h-screen  rounded-md mx-auto max-w-6xl shadow-lg  mt-5">
       <div className="hero-content flex-col md:flex-row">
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-transparent">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-cyan-300 shadow-lg bg-transparent">
           <form onSubmit={handleLogin} id="form">
             <h1 className="text-center my-6 text-4xl font-serif italic font-semibold text-transparent bg-clip-text bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500">
               Login
@@ -57,12 +57,12 @@ const Login = () => {
                   name="password"
                 />
                 <p className="my-4 ">
-                  <span className="text-sm font-light">
+                  <span className="text-sm font-light text-white">
                     {" "}
                     Don't Have an Account?{" "}
                   </span>
                   <Link
-                    className="text-blue-600 font-semibold hover:link"
+                    className="text-cyan-300 font-semibold hover:link"
                     to="/signup"
                   >
                     Sign Up

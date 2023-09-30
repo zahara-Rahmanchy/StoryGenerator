@@ -31,21 +31,21 @@ const GenerateStory = () => {
     }
   };
   return (
-    <section className="bg-blue-200 w-full mt-32">
+    <section className=" w-full ">
       <form
         onSubmit={handleGenerateStory}
         id="form"
-        className="flex flex-row bg-red-300 justify-between items-center"
+        className="flex flex-row bg-tranparent justify-between items-center"
       >
         <input
           type="textarea"
-          className="rounded-lg text-center  w-4/5 mx-auto h-12 my-2"
+          className="rounded-lg text-center  w-4/5 mx-auto h-14 my-2 border-2 border-cyan-800 shadow-sm shadow-cyan-300"
           placeholder="Enter a description to generate story"
           name="story"
         />
         <button
           type="submit"
-          className=" bg-transparent border-0 text-center btn absolute left-[89%]"
+          className=" bg-transparent border-0 text-center btn absolute left-[87%]"
         >
           {isLoading && (
             <span className="absolute loading loading-ring loading-lg"></span>

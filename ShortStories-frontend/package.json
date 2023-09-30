@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@aka_theos/react-hls-player": "^1.0.0",
+    "@lottiefiles/react-lottie-player": "^3.5.3",
     "axios": "^1.5.1",
     "firebase": "^10.4.0",
     "localforage": "^1.10.0",

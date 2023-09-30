@@ -6,15 +6,18 @@ const AllStories = () => {
   const {user} = useContext(AuthContext);
   const [stories, setStories] = useState([]);
   const [upvoted, setUpvoted] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const getSavedStory = async () => {
       try {
+        setLoading(true);
         const response = await fetch(`http://localhost:3000/sharedStories`);
 
         if (response.status === 200) {
           const data = await response.json();
           setStories(data);
           console.log(...stories);
+          setLoading(false);
         } else {
           console.error("Failed to fetch data:", response.status);
         }
@@ -45,29 +48,44 @@ const AllStories = () => {
     }
   };
   return (
-    <div className="grid lg:grid-cols-2 grid-cols-1 place-items-center py-32 max-w-7xl gap-y-16 w-full ">
-      {stories &&
-        stories.map(story => (
-          <div className="card w-[500px] bg-base-100 shadow-xl" key={story.id}>
-            <div className="card-body">
-              <h2 className="card-title">{story.prompt}</h2>
-              <div className=" overflow-y-scroll">
-                <p>{story.fullstory}</p>
-              </div>
-              <div className="card-actions justify-end">
-                <button
-                  onClick={() => {
-                    handleUpvote(story.storyId);
-                  }}
-                  className=" btn  btn-sm flex flex-row"
-                >
-                  <BiSolidUpvote className="text-lg" />
-                  Upvote
-                </button>
+    <div>
+      <h1 className="text-2xl text-center font-semibold mt-10 italic text-sky-200">
+        {" "}
+        Read, enjoy, and upvote your favorites to showcase the best tales."
+      </h1>
+
+      <div className="grid lg:grid-cols-2 grid-cols-1 place-items-center pb-32 pt-16 max-w-7xl gap-y-16 gap-x-10 w-full ">
+        {loading && <span className="loading loading-ring loading-lg"></span>}
+        {stories &&
+          stories.map(story => (
+            <div
+              className="card w-[500px] shadow-xl bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500"
+              key={story.id}
+            >
+              <div className="card-body">
+                <h2 className="card-title uppercase">{story.prompt}</h2>
+                <div className=" overflow-y-scroll">
+                  <p>{story.fullstory}</p>
+                </div>
+                <div className="card-actions justify-end">
+                  <p className="text-lg text-blue-800 font-bold">
+                    {story.upvotes}{" "}
+                    <span className="text-xs  text-gray-800">Upvotes</span>
+                  </p>
+                  <button
+                    onClick={() => {
+                      handleUpvote(story.storyId);
+                    }}
+                    className=" btn  btn-sm flex flex-row"
+                  >
+                    <BiSolidUpvote className="text-lg" />
+                    Upvote
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+      </div>
     </div>
   );
 };

@@ -41,10 +41,10 @@ app.post("/chat", async (req, res) => {
       authorization: process.env.Authorize,
     },
     data: {
-      max_tokens: 100,
+      max_tokens: 1000,
       truncate: "END",
       return_likelihoods: "NONE",
-      prompt: `Write a short story based on ${request}`,
+      prompt: `Write a short story based on ${request} and it should be within 1000 letters`,
     },
   };
 
@@ -133,6 +133,16 @@ async function run() {
     app.get("/sharedStories", async (req, res) => {
       const result = await sharedCollection.find().toArray(); // Fetch classes based on the email
       res.send(result);
+    });
+
+    // sorted according to upvotes
+
+    app.get("/leaderboard", async (req, res) => {
+      const sortedStories = await sharedCollection
+        .find()
+        .sort({upvotes: -1})
+        .toArray();
+      res.send(sortedStories);
     });
 
     // upvote
