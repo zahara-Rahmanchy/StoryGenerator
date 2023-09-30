@@ -2,11 +2,13 @@ import React, {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../firebase/AuthProvider";
 import {BiSolidUpvote} from "react-icons/bi";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 const AllStories = () => {
   const {user} = useContext(AuthContext);
   const [stories, setStories] = useState([]);
   const [upvoted, setUpvoted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     const getSavedStory = async () => {
       try {
@@ -27,6 +29,10 @@ const AllStories = () => {
     };
     getSavedStory();
   }, []);
+
+  const handleReadStory = story => {
+    navigate("/story", {state: {story: story}});
+  };
 
   const handleUpvote = async id => {
     try {
@@ -76,10 +82,17 @@ const AllStories = () => {
                     onClick={() => {
                       handleUpvote(story.storyId);
                     }}
-                    className=" btn  btn-sm flex flex-row"
+                    className=" btn text-white   flex flex-row bg-gradient-to-r  from-teal-500 via-base-600 to-blue-950"
                   >
                     <BiSolidUpvote className="text-lg" />
                     Upvote
+                  </button>
+
+                  <button
+                    onClick={() => handleReadStory(story)}
+                    className="btn  bg-blue-950 text-white"
+                  >
+                    Read
                   </button>
                 </div>
               </div>

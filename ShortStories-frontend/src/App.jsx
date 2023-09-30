@@ -21,7 +21,7 @@ function App() {
       <div className="drawer md:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div
-          className="drawer-content flex md:flex-col flex-col-reverse  items-end "
+          className="drawer-content flex md:flex-col flex-col-reverse  items-center "
           style={{
             background:
               "linear-gradient(45deg, rgba(44,169,191,1) 0%, rgba(6,34,61,1) 50%,  rgba(1,4,14,1) 100%)",

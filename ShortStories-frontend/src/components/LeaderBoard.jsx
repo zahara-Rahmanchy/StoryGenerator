@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const LeaderBoard = () => {
   const [loading, setLoading] = useState(false);
   const [stories, setStories] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     const getSavedStory = async () => {
       try {
@@ -21,6 +23,10 @@ const LeaderBoard = () => {
     };
     getSavedStory();
   }, []);
+
+  const handleReadStory = story => {
+    navigate("/story", {state: {story: story}});
+  };
   return (
     <>
       <h1 className="text-3xl text-center font-semibold mt-10 italic text-sky-200">
@@ -43,7 +49,10 @@ const LeaderBoard = () => {
                     {story.upvotes}{" "}
                     <span className="text-xs text-white">Upvotes</span>
                   </p>
-                  <button className="btn bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500">
+                  <button
+                    onClick={() => handleReadStory(story)}
+                    className="btn bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500"
+                  >
                     Read
                   </button>
                 </div>

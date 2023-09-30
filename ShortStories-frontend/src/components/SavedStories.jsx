@@ -1,11 +1,14 @@
 import React, {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../firebase/AuthProvider";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const SavedStories = () => {
   const {user} = useContext(AuthContext);
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const getSavedStory = async () => {
       try {
@@ -29,6 +32,10 @@ const SavedStories = () => {
     getSavedStory();
   }, []);
 
+  const handleReadStory = story => {
+    navigate("/story", {state: {story: story}});
+  };
+
   return (
     <div>
       <h1 className="text-3xl text-center text-cyan-300 font-semibold mt-10 italic">
@@ -49,7 +56,10 @@ const SavedStories = () => {
                   <p>{story.fullstory}</p>
                 </div>
                 <div className="card-actions justify-end">
-                  <button className="btn bg-blue-950 text-white border-0">
+                  <button
+                    className="btn bg-blue-950 text-white border-0"
+                    onClick={() => handleReadStory(story)}
+                  >
                     Read
                   </button>
                 </div>
