@@ -18,10 +18,10 @@ function App() {
   console.log(user);
   return (
     <>
-      <div className="drawer md:drawer-open">
+      <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div
-          className="drawer-content flex md:flex-col flex-col-reverse  items-center "
+          className="drawer-content flex lg:flex-col flex-col-reverse   "
           style={{
             background:
               "linear-gradient(45deg, rgba(44,169,191,1) 0%, rgba(6,34,61,1) 50%,  rgba(1,4,14,1) 100%)",
@@ -30,7 +30,7 @@ function App() {
           <Outlet />
           <label
             htmlFor="my-drawer-2"
-            className="btn bg-cyan-300 drawer-button md:hidden"
+            className="btn bg-cyan-300 drawer-button lg:hidden w-[20%]"
           >
             <FaBuromobelexperte className="text-xl" />
           </label>
