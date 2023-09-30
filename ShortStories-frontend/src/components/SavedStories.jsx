@@ -30,7 +30,7 @@ const SavedStories = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <h1 className="text-3xl text-center text-cyan-300 font-semibold mt-10 italic">
         {" "}
         Your Stories
@@ -40,7 +40,7 @@ const SavedStories = () => {
         {stories &&
           stories.map(story => (
             <div
-              className="card w-[500px]  bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500 shadow-xl"
+              className="card md:w-[500px] mx-3 bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500 shadow-xl"
               key={story.id}
             >
               <div className="card-body">
@@ -57,7 +57,7 @@ const SavedStories = () => {
             </div>
           ))}
       </div>
-    </>
+    </div>
   );
 };
 

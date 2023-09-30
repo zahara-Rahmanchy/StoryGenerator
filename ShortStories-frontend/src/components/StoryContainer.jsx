@@ -50,7 +50,7 @@ const StoryContainer = ({props}) => {
 
   console.log(props);
   return (
-    <div className="md:w-4/5 w-full h-[300px] text-white  flex flex-col justify-between items-end mt-1 mb-5 p-4  mx-auto overflow-y-scroll bg-black bg-opacity-30 rounded-md">
+    <div className="md:w-4/5 w-[90%] h-[300px] text-white flex flex-col justify-between items-end mt-1 mb-5 p-4  mx-auto overflow-y-scroll bg-black bg-opacity-30 rounded-md">
       <p className="text-md spa" style={{letterSpacing: "1.5px"}}>
         {props.generatedStory}
       </p>

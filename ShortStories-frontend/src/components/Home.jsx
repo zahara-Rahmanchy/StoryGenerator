@@ -32,8 +32,8 @@ const Home = () => {
         </div>
       ) : (
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-row justify-center items-center my-10 space-x-0 gap-0">
-            <h1 className="text-white text-2xl font-bold italic">
+          <div className="flex lg:flex-row flex-col justify-center items-center  mx-5 my-10 space-x-0 gap-0">
+            <h1 className="text-white md:text-2xl text-xl font-bold italic text-center mb-2">
               Write unique story title, and watch as our AI weaves it into a
               captivating tale.
             </h1>
