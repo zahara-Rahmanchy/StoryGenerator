@@ -3,14 +3,22 @@ const app = express();
 const cors = require("cors");
 const port = process.env.PORT || 3000;
 require("dotenv").config();
+// const corsOptions = {
+//   origin: "*",
+//   credentials: true,
+//   optionSuccessStatus: 200,
+//   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+// };
 const corsOptions = {
-  origin: "*",
+  origin: ["http://localhost:5173", "https://generateshortstories.netlify.app"],
   credentials: true,
-  optionSuccessStatus: 200,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  optionSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
+
+app.options("*", cors(corsOptions)); // Allow preflight requests
 
 // Middleware to parse JSON request bodies
 const axios = require("axios");
@@ -31,6 +39,11 @@ app.use(express.json());
 app.post("/chat", async (req, res) => {
   const request = req.body.prompt;
   // const request = "Hello world";
+  // Start timer for the total response time
+  console.time("Total response time");
+
+  // Start timer for the Cohere API call time
+  console.time("Cohere API call time");
   console.log("request: ", request);
 
   const options = {
@@ -42,23 +55,28 @@ app.post("/chat", async (req, res) => {
       authorization: process.env.Authorize,
     },
     data: {
-      max_tokens: 1000,
+      max_tokens: 300,
       truncate: "END",
       return_likelihoods: "NONE",
       prompt: `You are a story writer. You will be given few words and based
-      on that you need to write a complete story and show it. The story should be based on ${request} and the alphabet limit is 1000.
-      You need to make sure that a complete story and generate within 1000 letters. ONLY WRITE THE STORY DO NOT TELL THE SPECIFIED WORD LIMIT IN THE STORY`,
+      on that you need to write a complete story and show it. The story should be based on ${request} and the word limit is 1000.
+      You need to make sure that a complete story and generate within 1000 words. ONLY WRITE THE STORY DO NOT TELL THE SPECIFIED WORD LIMIT IN THE STORY`,
     },
+    timeout: 20000,
   };
 
   axios
     .request(options)
     .then(function (response) {
+      console.timeEnd("Cohere API call time");
       const generatedText = response.data.generations[0].text;
       console.log("hjhh", response.data.generations[0].text);
       res.send(generatedText);
+      console.timeEnd("Total response time");
     })
     .catch(function (error) {
+      console.timeEnd("Cohere API call time");
+      console.timeEnd("Total response time");
       console.error(error);
       res.status(500).send("Error generating story");
     });
@@ -134,7 +152,8 @@ async function run() {
 
     // shared stories
     app.get("/sharedStories", async (req, res) => {
-      const result = await sharedCollection.find().toArray(); // Fetch classes based on the email
+      const result = await sharedCollection.find().toArray();
+      console.log("sotr: ", result); // Fetch classes based on the email
       res.send(result);
     });
 
@@ -196,6 +215,8 @@ app.get("/", (req, res) => {
   res.send("Hello from StoryBook");
 });
 
-app.listen(port, () => {
-  console.log("port", port);
+const server = app.listen(port, () => {
+  console.log("Server is running on port", port);
 });
+
+server.timeout = 60000;
