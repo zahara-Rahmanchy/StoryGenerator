@@ -21,6 +21,7 @@ const AuthProvider = ({children}) => {
 
   // create user using email and password
   const createUser = (email, password) => {
+    console.log("email, password: ", email, password);
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };

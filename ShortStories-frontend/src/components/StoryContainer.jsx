@@ -8,6 +8,10 @@ const StoryContainer = ({props}) => {
   const {user} = useContext(AuthContext);
 
   const handleSaveStories = async () => {
+    if (!user) {
+      alert("Please log in to save the story.");
+      return;
+    }
     const story = {
       creator: user.name,
       email: user.email,
@@ -31,6 +35,10 @@ const StoryContainer = ({props}) => {
 
   //   share
   const hadnleShareStory = async () => {
+    if (!user) {
+      alert("Please log in to save the story.");
+      return;
+    }
     const story = {
       creator: user.name,
       email: user.email,
@@ -56,17 +64,26 @@ const StoryContainer = ({props}) => {
 
   console.log(props);
   return (
-    <div className="md:w-4/5 w-[90%] h-[300px] text-white flex flex-col justify-between items-end mt-1 mb-5 p-4  mx-auto overflow-y-scroll bg-black bg-opacity-30 rounded-md">
+    <div className="z-10 absolute lg:right-auto right-[10%]  left-[10%] md:w-4/5  h-[400px] text-white flex flex-col justify-between  mt-1 mb-5 p-4  mx-auto overflow-y-scroll bg-stone-600 bg-opacity-80 rounded-md">
+      <h6 className=" text-center text-lg font-medium text-amber-300 my-2">
+        {props.Prompt.toUpperCase()}
+      </h6>
       <p className="text-md spa" style={{letterSpacing: "1.5px"}}>
         {props.generatedStory}
       </p>
 
-      <div className="flex flex-row  space-x-4 me-5  ">
-        <button className="bg-transparent">
-          <CiSaveUp2 className="text-2xl" onClick={handleSaveStories} />
+      <div className="flex flex-row  space-x-4 me-5 justify-between mt-3">
+        <button
+          className=" btn bg-transparent shadow text-amber-300 hover:text-white hover:bg-amber-300 focus:text-white focus:bg-amber-300"
+          onClick={handleSaveStories}
+        >
+          Save <CiSaveUp2 className="text-xl" />
         </button>
-        <button onClick={hadnleShareStory}>
-          <BsFillShareFill className="text-xl" />
+        <button
+          className="btn bg-transparent shadow text-amber-300 hover:text-white hover:bg-amber-300 focus:text-white focus:bg-amber-300"
+          onClick={hadnleShareStory}
+        >
+          Share <BsFillShareFill className="text-lg" />
         </button>
       </div>
     </div>

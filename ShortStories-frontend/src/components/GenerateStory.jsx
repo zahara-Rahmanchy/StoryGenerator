@@ -17,10 +17,7 @@ const GenerateStory = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        "https://y-seven-ecru.vercel.app/chat",
-        {prompt}
-      );
+      const response = await axios.post("http://localhost:3000/chat", {prompt});
       setGeneratedStory(response.data);
       setPrompt(prompt);
       const id = uuid().slice(0, 8);
@@ -34,7 +31,7 @@ const GenerateStory = () => {
     }
   };
   return (
-    <section className=" w-full h-screen ">
+    <section className=" w-full h-screen z-10">
       <form
         onSubmit={handleGenerateStory}
         id="form"
@@ -42,13 +39,13 @@ const GenerateStory = () => {
       >
         <input
           type="textarea"
-          className="rounded-lg md:text-center px-2 w-4/5 mx-auto h-14 my-2 border-2 border-cyan-800 shadow-sm shadow-cyan-300"
+          className="rounded-lg md:text-center px-2 w-4/5 mx-auto h-14 my-2 border-2 border-gray-500 shadow-sm shadow-amber-200"
           placeholder="e.g(Once Upon a time)"
           name="story"
         />
         <button
           type="submit"
-          className=" bg-transparent border-0 text-center btn absolute md:left-[87%] left-[78%]"
+          className="absolute right-[12%]  md:right-[12%]  bg-transparent border-0 text-center btn "
         >
           {isLoading && (
             <span className="absolute loading loading-ring loading-lg"></span>

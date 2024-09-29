@@ -27,17 +27,17 @@ const Login = () => {
   };
 
   return (
-    <div className="hero  min-h-screen  rounded-md mx-auto max-w-6xl shadow-lg  mt-5">
+    <div className="hero  min-h-screen  rounded-md mx-auto  shadow-lg  mt-5 bg-amber-50">
       <div className="hero-content flex-col md:flex-row">
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-cyan-300 shadow-lg bg-transparent">
+        <div className="card flex-shrink-0 w-full max-w-sm bg-slate-800 bg-opacity-90 shadow-lg bg-transparent">
           <form onSubmit={handleLogin} id="form">
-            <h1 className="text-center my-6 text-4xl font-serif italic font-semibold text-transparent bg-clip-text bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500">
+            <h1 className="text-center my-6 text-4xl font-serif italic font-semibold text-transparent bg-clip-text bg-white">
               Login
             </h1>
             <div className="card-body">
               <div className="form-control">
-                <label className="label text-cyan-300">
-                  <span className="label-text text-cyan-300">Email</span>
+                <label className="label text-amber-300">
+                  <span className="label-text text-white">Email</span>
                 </label>
                 <input
                   type="text"
@@ -48,7 +48,7 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-cyan-300">Password</span>
+                  <span className="label-text text-white">Password</span>
                 </label>
                 <input
                   type="password"
@@ -62,7 +62,7 @@ const Login = () => {
                     Don't Have an Account?{" "}
                   </span>
                   <Link
-                    className="text-cyan-300 font-semibold hover:link"
+                    className="text-amber-100 font-semibold hover:link"
                     to="/signup"
                   >
                     Sign Up
@@ -72,7 +72,7 @@ const Login = () => {
               {error && <p className="text-sm text-red-600">{error}</p>}
               <div className="form-control mt-6">
                 <button
-                  className="btn border-0 bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500 "
+                  className="btn border-0 bg-amber-200 hover:bg-amber-300 "
                   type="submit"
                 >
                   Login

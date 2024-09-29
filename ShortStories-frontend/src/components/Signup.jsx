@@ -14,9 +14,9 @@ const Signup = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    // console.log(name, email, password, url);
+    console.log(name, email, password);
 
-    createUser(name, email, password)
+    createUser(email, password)
       .then(result => {
         const user = result.user;
         console.log(user);
@@ -35,6 +35,7 @@ const Signup = () => {
           })
           .catch(error => {
             setError(error.message);
+            console.log("err: ", error);
           });
         navigate("/", {replace: true});
 
@@ -45,15 +46,15 @@ const Signup = () => {
   return (
     <div className="hero  min-h-screen bg-tranparent rounded-md mx-auto">
       <div className="hero-content flex-col md:flex-row">
-        <div className="card flex-shrink-0 w-full max-w-md shadow-2xl ">
+        <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-slate-800 bg-opacity-90 ">
           <div className="card-body">
-            <h1 className="text-center my-6 text-4xl font-serif italic font-semibold text-transparent bg-clip-text bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500">
+            <h1 className="text-center my-6 text-4xl font-serif italic font-semibold text-transparent bg-clip-text text-white">
               Sign Up
             </h1>
             <form onSubmit={handleSignUp} id="form">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-cyan-300">Name</span>
+                  <span className="label-text text-white">Name</span>
                 </label>
                 <input
                   type="text"
@@ -65,7 +66,7 @@ const Signup = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-cyan-300">Email</span>
+                  <span className="label-text text-white">Email</span>
                 </label>
                 <input
                   type="text"
@@ -78,7 +79,7 @@ const Signup = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-cyan-300">Password</span>
+                  <span className="label-text text-white">Password</span>
                 </label>
                 <input
                   type="password"
@@ -93,7 +94,7 @@ const Signup = () => {
                     Already Have an Account?{" "}
                   </span>
                   <Link
-                    className="text-blue-300 font-semibold hover:link"
+                    className="text-white font-semibold hover:link"
                     to="/login"
                   >
                     Login
@@ -104,7 +105,7 @@ const Signup = () => {
               <div className="form-control mt-6">
                 <button
                   type="submit"
-                  className="btn border-0 bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500 "
+                  className="btn border-0 bg-amber-200 hover:bg-amber-300 "
                 >
                   Sign Up
                 </button>

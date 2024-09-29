@@ -27,10 +27,11 @@ app.use(express.json());
 // const openai = new OpenAIApi(config);
 
 //---------------------- api endpoint to get the generated story
-// /change to 1000
+// /change to 1000 Write a short story based on ${request} and it should be within 1000 letters`,
 app.post("/chat", async (req, res) => {
-  const request = req.body;
-  console.log(request);
+  const request = req.body.prompt;
+  // const request = "Hello world";
+  console.log("request: ", request);
 
   const options = {
     method: "POST",
@@ -44,7 +45,9 @@ app.post("/chat", async (req, res) => {
       max_tokens: 1000,
       truncate: "END",
       return_likelihoods: "NONE",
-      prompt: `Write a short story based on ${request} and it should be within 1000 letters`,
+      prompt: `You are a story writer. You will be given few words and based
+      on that you need to write a complete story and show it. The story should be based on ${request} and the alphabet limit is 1000.
+      You need to make sure that a complete story and generate within 1000 letters. ONLY WRITE THE STORY DO NOT TELL THE SPECIFIED WORD LIMIT IN THE STORY`,
     },
   };
 
@@ -52,7 +55,7 @@ app.post("/chat", async (req, res) => {
     .request(options)
     .then(function (response) {
       const generatedText = response.data.generations[0].text;
-      console.log(response.data.generations[0].text);
+      console.log("hjhh", response.data.generations[0].text);
       res.send(generatedText);
     })
     .catch(function (error) {

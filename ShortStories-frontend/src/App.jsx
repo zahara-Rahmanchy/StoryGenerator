@@ -1,4 +1,4 @@
-import {useState, useContext} from "react";
+import {useContext} from "react";
 import {FaBuromobelexperte} from "react-icons/fa";
 import "./App.css";
 
@@ -21,37 +21,43 @@ function App() {
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div
-          className="drawer-content flex lg:flex-col flex-col-reverse   "
-          style={{
-            background:
-              "linear-gradient(45deg, rgba(44,169,191,1) 0%, rgba(6,34,61,1) 50%,  rgba(1,4,14,1) 100%)",
-          }}
+          className="drawer-content flex lg:flex-col flex-col-reverse  bg-amber-50 "
+          // style={{
+          //   background:
+          //     "linear-gradient(45deg, rgba(44,169,191,1) 0%, rgba(6,34,61,1) 50%,  rgba(1,4,14,1) 100%)",
+          // }}
         >
           <Outlet />
           <label
             htmlFor="my-drawer-2"
-            className="btn bg-cyan-300 drawer-button lg:hidden w-[20%]"
+            className="btn bg-transparent drawer-button lg:hidden justify-start"
           >
-            <FaBuromobelexperte className="text-xl" />
+            <FaBuromobelexperte className="text-3xl font-bold text-gray-700" />
           </label>
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side z-20">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 min-h-full bg-slate-900 text-white text-xl ">
             {/* Sidebar content here */}
-            <li className=" hover:bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500 hover:rounded-md ">
-              <Link to="/">Home</Link>
+            <li className="text-white hover:bg-amber-100 hover:text-gray-600 focus:bg-amber-100 focus:text-gray-600 focus:outline-none hover:rounded-md ">
+              <Link
+                className="focus:text-gray-600 hover:text-gray-600 text-white focus:outline-none"
+                to="/"
+              >
+                Home
+              </Link>
             </li>
-            <li className=" hover:bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500 hover:rounded-md">
+
+            <li className="text-white hover:bg-amber-100 hover:text-gray-600 focus:bg-amber-100 focus:text-gray-600 focus:outline-none hover:rounded-md ">
               <Link to="/stories">Stories</Link>
             </li>
             {!user ? (
               <>
                 {" "}
-                {/* <li className=" hover:bg-purple-400">
+                <li className="text-white hover:bg-amber-100 hover:text-gray-600 focus:bg-amber-100 focus:text-gray-600 focus:outline-none hover:rounded-md ">
                   <Link to="/login">Login</Link>
-                </li> */}
-                <li className=" hover:bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500 hover:rounded-md">
+                </li>
+                <li className="text-white hover:bg-amber-100 hover:text-gray-600 focus:bg-amber-100 focus:text-gray-600 focus:outline-none hover:rounded-md ">
                   <Link to="/Signup">Sign Up</Link>
                 </li>
                 {/* <li className=" hover:bg-purple-400">
@@ -60,11 +66,11 @@ function App() {
               </>
             ) : (
               <>
-                <li className=" hover:bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500 hover:rounded-md">
+                <li className="text-white hover:bg-amber-100 hover:text-gray-600 focus:bg-amber-100 focus:text-gray-600 focus:outline-none hover:rounded-md ">
                   <Link to="/savedstories">Saved Stories</Link>
                 </li>
 
-                <li className=" hover:bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500 hover:rounded-md">
+                <li className="text-white hover:bg-amber-100 hover:text-gray-600 focus:bg-amber-100 focus:text-gray-600 focus:outline-none hover:rounded-md ">
                   <Link to="/leaderboard">Leaderboard</Link>
                 </li>
 

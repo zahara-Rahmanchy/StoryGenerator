@@ -57,13 +57,13 @@ const AllStories = () => {
   };
   return (
     <div>
-      <h1 className="text-2xl text-center font-semibold mt-10 italic text-sky-200">
+      <h1 className="text-2xl text-center font-semibold mt-10 italic text-gray-600">
         {" "}
-        Read, enjoy, and upvote your favorites to showcase the best tales."
+        Read, enjoy, and upvote your favorites to showcase the best tales.
       </h1>
 
       <div className="grid lg:grid-cols-2 grid-cols-1 place-items-center pb-32 pt-16 max-w-7xl gap-y-16 gap-x-10 w-full ">
-        {loading && <span className="loading loading-ring loading-lg"></span>}
+        {/* {loading && <span className="loading loading-ring loading-lg"></span>} */}
         {stories &&
           stories.map(story => (
             <div

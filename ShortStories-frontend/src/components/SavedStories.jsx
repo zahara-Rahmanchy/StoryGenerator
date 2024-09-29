@@ -38,10 +38,7 @@ const SavedStories = () => {
 
   return (
     <div>
-      <h1 className="text-3xl text-center text-cyan-300 font-semibold mt-10 italic">
-        {" "}
-        Your Stories
-      </h1>
+      <h1 className="text-3xl text-center text-gray-600"> Your Stories</h1>
       <div className="grid lg:grid-cols-2 grid-cols-1 place-items-center pb-32 pt-16 max-w-7xl gap-y-16 w-full">
         {loading && <span className="loading loading-ring loading-lg"></span>}
         {stories &&
