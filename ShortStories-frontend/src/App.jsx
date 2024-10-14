@@ -75,7 +75,7 @@ function App() {
                 </li>
 
                 <button
-                  className="ms-2 me-0 btn btn-sm mt-4"
+                  className="ms-2 me-0 btn btn-sm mt-4 bg-amber-500 border-none  text-white w-1/2 hover:bg-amber-400"
                   onClick={handleLogOut}
                 >
                   Logout

@@ -10,6 +10,13 @@ const GenerateStory = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isInput, setInput] = useState(false);
   const [Prompt, setPrompt] = useState("");
+
+  const handleInput = e => {
+    if (e.target.value !== "") {
+      setInput(true);
+    }
+  };
+
   const handleGenerateStory = async e => {
     e.preventDefault();
     const prompt = e.target.story.value;
@@ -24,6 +31,7 @@ const GenerateStory = () => {
       );
       setGeneratedStory(response.data);
       setPrompt(prompt);
+      setInput(false);
       const id = uuid().slice(0, 8);
       setStoryId(id);
       console.log(response);
@@ -35,32 +43,32 @@ const GenerateStory = () => {
     }
   };
   return (
-    <section className=" w-full h-screen z-10 mx-auto">
+    <section className=" w-full h-screen z-10  mx-auto px-auto">
       <form
         onSubmit={handleGenerateStory}
         id="form"
-        className="flex flex-row bg-tranparent justify-between items-center  ms-auto md:mx-0"
+        className="flex flex-row bg-tranparent justify-around items-center   w-full mx-auto"
       >
         <input
           type="textarea"
-          className="rounded-lg md:text-center px-2 w-4/5 mx-auto h-14 my-2 border-2 border-gray-500 shadow shadow-amber-200"
+          className="rounded-lg md:text-center px-2 w-full ms-10 md:ms-20 md:w-4/5 h-14 my-2 border-2 border-gray-500 shadow shadow-amber-200"
           placeholder="e.g(Once Upon a time)"
-          onChange={e => setInput(e.target.value ? true : false)}
+          onChange={handleInput}
           name="story"
           required
         />
 
         <button
           type="submit"
-          className="relative right-[13%] bg-transparent border-0 text-center btn-circle "
-          disabled={!isInput || isLoading}
+          className="relative right-[9%] bg-transparent border-0 text-center btn-circle "
+          disabled={isInput === false || isLoading}
         >
           {isLoading && (
-            <span className="absolute bottom-1 right-[39%] loading loading-ring loading-lg"></span>
+            <span className="absolute bottom-0 md:right-[29.5%] right-[10%] loading loading-ring w-[3rem]"></span>
           )}
           <PiPaperPlaneRightFill
             className={`rotate-90 text-xl ${
-              !isInput || isLoading ? "text-gray-300" : "text-blue-950"
+              isInput === false || isLoading ? "text-gray-300" : "text-blue-950"
             }`}
           />
         </button>

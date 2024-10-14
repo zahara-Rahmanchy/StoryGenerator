@@ -3,6 +3,7 @@ import {BsFillShareFill} from "react-icons/bs";
 import {CiSaveUp2} from "react-icons/ci";
 import {AuthContext} from "../firebase/AuthProvider";
 import axios from "axios";
+// import "tailwind-scrollbar";
 
 const StoryContainer = ({props}) => {
   const {user} = useContext(AuthContext);
@@ -64,7 +65,7 @@ const StoryContainer = ({props}) => {
 
   console.log(props);
   return (
-    <div className="z-10 absolute lg:right-auto right-[10%]  left-[10%] md:w-4/5  h-[400px] text-white flex flex-col justify-between  mt-1 mb-5 p-4  mx-auto overflow-y-scroll bg-stone-600 bg-opacity-80 rounded-md">
+    <div className="z-10 absolute lg:right-auto right-[10%]  left-[10%] md:w-4/5   h-[450px] text-white flex flex-col justify-between  mt-1 mb-5 p-4  mx-auto overflow-y-scroll bg-stone-600 bg-opacity-80 rounded-md scrollbar scrollbar-thumb-blue-600 scrollbar-track-transparent">
       <h6 className=" text-center text-lg font-medium text-amber-300 my-2">
         {props.Prompt.toUpperCase()}
       </h6>
