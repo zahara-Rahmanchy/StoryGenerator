@@ -37,7 +37,7 @@ function App() {
         </div>
         <div className="drawer-side z-20">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 min-h-full bg-slate-900 text-white text-xl ">
+          <ul className="menu p-4 w-80 min-h-full bg-stone-900 text-white text-xl ">
             {/* Sidebar content here */}
             <li className="text-white hover:bg-amber-100 hover:text-gray-600 focus:bg-amber-100 focus:text-gray-600 focus:outline-none hover:rounded-md ">
               <Link

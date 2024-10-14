@@ -47,6 +47,7 @@ const AllStories = () => {
           alert(response.data);
         }
         setUpvoted(true); // Mark as upvoted
+        navigate("/stories");
       } else {
         // Handle the case where the user has already upvoted (optional)
         alert("You have already upvoted this story.");
@@ -67,34 +68,39 @@ const AllStories = () => {
         {stories &&
           stories.map(story => (
             <div
-              className="card w-[500px] shadow-xl bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500"
+              className="card  w-[400px] shadow-xl bg-stone-500  bg-opacity-20 "
               key={story.id}
             >
-              <div className="card-body">
+              <div className="card-body h-[350px]">
                 <h2 className="card-title uppercase">{story.prompt}</h2>
-                <div className=" overflow-y-scroll">
-                  <p>{story.fullstory}</p>
+                <div className=" ">
+                  {story.fullstory.length > 300
+                    ? `${story.fullstory.slice(0, 350)}...`
+                    : story.fullstory}
                 </div>
-                <div className="card-actions justify-end">
+                <div className="card-actions justify-end mt-3">
                   <p className="text-lg text-blue-800 font-bold">
                     {story.upvotes}{" "}
                     <span className="text-xs  text-gray-800">Upvotes</span>
                   </p>
+
+                  <button
+                    onClick={() => handleReadStory(story)}
+                    className="btn-sm bg-amber-300 rounded-2xl text-black"
+                  >
+                    Read More
+                  </button>
                   <button
                     onClick={() => {
                       handleUpvote(story.storyId);
                     }}
-                    className=" btn text-white   flex flex-row bg-gradient-to-r  from-teal-500 via-base-600 to-blue-950"
+                    className="btn-sm bg-amber-300 rounded-2xl text-black "
                   >
-                    <BiSolidUpvote className="text-lg" />
-                    Upvote
-                  </button>
-
-                  <button
-                    onClick={() => handleReadStory(story)}
-                    className="btn  bg-blue-950 text-white"
-                  >
-                    Read
+                    <span className="text-md flex justify-between items-center">
+                      <BiSolidUpvote className="mt-[2px] me-1" />
+                      Upvote
+                    </span>
+                    {/* Upvote */}
                   </button>
                 </div>
               </div>

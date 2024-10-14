@@ -44,17 +44,17 @@ const SavedStories = () => {
         {stories &&
           stories.map(story => (
             <div
-              className="card md:w-[500px] mx-3 bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500 shadow-xl"
+              className="card md:w-[500px] mx-3 bg-amber-100 shadow-md"
               key={story.id}
             >
               <div className="card-body">
-                <h2 className="card-title">{story.prompt}</h2>
+                <h2 className="card-title">{story.prompt.toUpperCase()}</h2>
                 <div className=" overflow-y-scroll">
                   <p>{story.fullstory}</p>
                 </div>
                 <div className="card-actions justify-end">
                   <button
-                    className="btn bg-blue-950 text-white border-0"
+                    className="btn bg-amber-200 border-0"
                     onClick={() => handleReadStory(story)}
                   >
                     Read

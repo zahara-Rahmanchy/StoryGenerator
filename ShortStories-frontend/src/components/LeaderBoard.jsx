@@ -31,19 +31,23 @@ const LeaderBoard = () => {
   };
   return (
     <>
-      <h1 className="text-3xl text-center font-semibold mt-10 italic text-sky-200">
-        {" "}
-        Most-loved Stories
-      </h1>
-      <div className=" place-items-center pb-32 pt-16 max-w-7xl gap-y-16 w-full">
+      <div className=" place-items-center pb-32 pt-7 max-w-7xl gap-y-16 w-full">
+        <h1 className="text-3xl text-center font-semibold mb-10 italic text-gray-600">
+          {" "}
+          Most-loved Stories
+        </h1>
         {loading && <span className="loading loading-ring loading-lg"></span>}
         {stories &&
           stories.map((story, index) => (
             <div className="" key={index}>
-              <div className="card-body border-2 rounded-lg w-[90%] mx-auto mb-10 text-cyan-100 bg-black bg-opacity-20">
-                <h2 className="card-title text-white">{story.prompt}</h2>
-                <div className=" overflow-y-scroll">
-                  <p>{story.fullstory}</p>
+              <div className="card-body border-2 rounded-lg w-[90%] mx-auto mb-10 text-amber-100 bg-black bg-opacity-80">
+                <h2 className="card-title text-white">
+                  {story.prompt.toUpperCase()}
+                </h2>
+                <div className="">
+                  {story.fullstory.length > 400
+                    ? `${story.fullstory.slice(0, 400)}...`
+                    : story.fullstory}
                 </div>
                 <hr />
                 <div className="card-actions justify-end ">
@@ -53,7 +57,7 @@ const LeaderBoard = () => {
                   </p>
                   <button
                     onClick={() => handleReadStory(story)}
-                    className="btn bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500"
+                    className="btn bg-amber-200"
                   >
                     Read
                   </button>

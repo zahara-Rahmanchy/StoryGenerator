@@ -27,9 +27,9 @@ const Login = () => {
   };
 
   return (
-    <div className="hero  min-h-screen  rounded-md mx-auto  shadow-lg  mt-5 bg-amber-50">
-      <div className="hero-content flex-col md:flex-row">
-        <div className="card flex-shrink-0 w-full max-w-sm bg-slate-800 bg-opacity-90 shadow-lg bg-transparent">
+    <div className="hero  min-h-screen  rounded-md mx-auto  shadow-lg  mt-5 ">
+      <div className="hero-content flex-col md:flex-row bg-stone-700 border-b-8 border-amber-200 rounded shadow">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-lg bg-transparent">
           <form onSubmit={handleLogin} id="form">
             <h1 className="text-center my-6 text-4xl font-serif italic font-semibold text-transparent bg-clip-text bg-white">
               Login

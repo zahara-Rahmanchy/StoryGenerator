@@ -45,8 +45,8 @@ const Signup = () => {
   };
   return (
     <div className="hero  min-h-screen bg-tranparent rounded-md mx-auto">
-      <div className="hero-content flex-col md:flex-row">
-        <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-slate-800 bg-opacity-90 ">
+      <div className="hero-content flex-col md:flex-row bg-stone-700 border-b-8 border-amber-200 rounded shadow">
+        <div className="card flex-shrink-0 w-full max-w-md shadow-2xl  ">
           <div className="card-body">
             <h1 className="text-center my-6 text-4xl font-serif italic font-semibold text-transparent bg-clip-text text-white">
               Sign Up
